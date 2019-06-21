@@ -1,0 +1,22 @@
+{
+    "name": "Website Blocker",
+    "version": "1.0",
+    "description": "It blocks websites",
+
+    "permissions": [
+        "contextMenus",
+        "storage",
+        "declarativeContent"
+    ],
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    "page_action": {
+        "default_popup": "popup.html"
+    },
+
+    "manifest_version": 2
+}

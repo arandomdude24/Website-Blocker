@@ -1,7 +1,8 @@
 'use strict';
 
+var list = [];
 chrome.runtime.onInstalled.addListener(function() {
-   chrome.storage.sync.set({sites: 'empty'}, function() {
+   chrome.storage.sync.set({sites: list}, function() {
       console.log('List of websits has been initalized');
    });
 

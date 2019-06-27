@@ -1,11 +1,11 @@
 'use strict';
 
-var list = [];
 chrome.runtime.onInstalled.addListener(function() {
-   chrome.storage.sync.set({sites: list}, function() {
+   
+   var list = "";
+   chrome.storage.local.set({sites: list}, function() {
       console.log('List of websits has been initalized');
-   });
-
+   }); 
 
    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
@@ -16,3 +16,24 @@ chrome.runtime.onInstalled.addListener(function() {
       }]);
    });
 });
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+   chrome.storage.local.get('sites', function(result) {
+      let lst = result.sites.split('\n');
+      console.log(lst.toString());
+      let block = false;
+      if (lst[0] != undefined) {
+         var x;
+         for (x=0; x<lst.length; x++) {
+            if (changeInfo.url.includes(lst[x])) {
+               block = true;
+               break;
+            }
+         }
+         if (block) {
+            alert('Blocking webiste');
+         }
+      }
+   })
+})
+

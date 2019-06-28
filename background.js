@@ -20,19 +20,20 @@ chrome.runtime.onInstalled.addListener(function() {
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
    chrome.storage.local.get('sites', function(result) {
       let lst = result.sites.split('\n');
-      console.log(lst.toString());
       let block = false;
-      if (lst[0] != undefined) {
-         var x;
-         for (x=0; x<lst.length; x++) {
-            if (changeInfo.url.includes(lst[x])) {
-               block = true;
-               break;
-            }
+      var s = '';
+      var x;
+      for (x=0; x<lst.length; x++) {
+         s += 'Element ' + x + ' ' + lst[x] + '\n';
+         if (lst[x] != '' && changeInfo.url.includes(lst[x]) ) {
+            block = true;
+            break;
          }
-         if (block) {
-            alert('Blocking webiste');
-         }
+      }
+
+      if (block) {
+         alert('Blocking Website');
+         chrome.tabs.update(tabId, {url: 'google.com'});
       }
    })
 })

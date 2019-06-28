@@ -8,6 +8,10 @@ function myAction(input) {
 function documentEvents() {
     document.getElementById('block').addEventListener('click', 
     function() {
-        myAction(document.getElementById('time'));
+        pressed = true;
+        chrome.storage.local.set({button:pressed}, function() {
+            alert('Button pressed, blocking stuff now');
+            myAction(document.getElementById('time'));
+        })
     })
 }

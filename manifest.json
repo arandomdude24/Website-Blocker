@@ -7,7 +7,7 @@
         "contextMenus",
         "storage",
         "declarativeContent",
-        "*://*.google.com/",
+        "<all_urls>",
         "tabs"
     ],
 

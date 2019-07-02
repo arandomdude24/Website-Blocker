@@ -14,6 +14,14 @@ function blocker(input) {
     if (Number.isInteger(val) && val > 0) {
         chrome.storage.local.set({button: true}, function() {
             alert('Button pressed, blocking stuff now');
+
+            var newDate = new Date();
+            newDate.setTime(Date.now() + val*1000*60);
+
+            chrome.alarms.clear('timer', function(){
+                alert(newDate.toLocaleString());
+                chrome.alarms.create('timer', {when: newDate.getTime()});
+            });
         })
     }
     else {

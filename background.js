@@ -9,6 +9,8 @@ chrome.runtime.onInstalled.addListener(function() {
       console.log('Block function has been set to false');
    })
 
+   chrome.alarms.create('timer', {delayInMinutes: 100});
+
    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
          conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -38,6 +40,16 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
             }
          })
       }
-   })
-})
+   });   
+});
+
+chrome.alarms.onAlarm.addListener(function(alarm) {
+   console.log('Ok the event fired');
+   chrome.storage.local.set({button: false}, function() {
+       console.log('Sites are unblocked now');
+       chrome.alarms.clear('timer', function() {
+          console.log('Reset the alarm');
+       });
+   });
+});
 

@@ -34,9 +34,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
                }
             }
       
-            if (block) {
+            if (block) 
                chrome.tabs.update(tabId, {url: 'https://www.google.com/'});
-            }
          })
       }
    });   

@@ -7,18 +7,11 @@ function documentEvents() {
             "The blocker is disabled, go the options menu to active it.";
         }
         else {
-            document.getElementById('text').innerHTML=
-            "Well stuff is being blocked, don't know how long"
+            chrome.storage.local.get('time', function(result) {
+                text = "The specified site will be blocked until: " + result.time;
+                document.getElementById('text').innerHTML = text;
+            })
         }
     })
 
-    /*
-    document.getElementById('block').addEventListener('click', 
-    function() {
-        pressed = true;
-        chrome.storage.local.set({button:pressed}, function() {
-            alert('Button pressed, blocking stuff now');
-            myAction(document.getElementById('time'));
-        })
-    }) */
 }

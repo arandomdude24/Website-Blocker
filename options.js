@@ -2,10 +2,15 @@ document.addEventListener('DOMContentLoaded', documentEvents, false);
 
 function myAction(input) {
     chrome.storage.local.get('sites', function(result) {
-        result.sites += input.value + '\n';
-        chrome.storage.local.set({sites:result.sites}, function() {
-            alert('New stored value is \n' + result.sites);
-        })
+        if (input.value != '' && input.value != undefined && (!(result.sites.includes(input.value))))  {
+            result.sites[result.sites.length] = input.value
+            chrome.storage.local.set({sites:result.sites}, function() {
+                current = document.getElementById('list').innerHTML;
+                current += 'Element ' + result.sites.length + ': '
+                + input.value + '<br>'
+                document.getElementById('list').innerHTML = current;
+            })
+        }
     })
 }
 

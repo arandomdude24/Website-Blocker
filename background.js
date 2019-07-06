@@ -11,14 +11,6 @@ chrome.runtime.onInstalled.addListener(function() {
 
    chrome.alarms.create('timer', {delayInMinutes: 100});
 
-   /*
-   chrome.contextMenus.create({
-      "title": "Menu",
-      "contexts": ["options"],
-      "onClick": clickHandler
-   });
-   */
-
    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
          conditions: [new chrome.declarativeContent.PageStateMatcher({

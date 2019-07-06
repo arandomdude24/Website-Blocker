@@ -2,24 +2,32 @@
 <html>
     <head>
         <title> Options </title>
+        <link rel="stylesheet" href="options.css">
         <script src="options.js"></script>
     </head>
 
     <body>
-        <p> Enter keywords that should be blocked. </p>
-        <input id="site"/> 
-        <button id="add"> Add</button>
-        
+        <h1> Options </h1>
+        <div class="wrapper">
+            <div class="left">
+                <h3> Enter keywords to block </h3>
+                <input id="site"/> 
+                <button id="add"> Add</button>
+            </div>
+                
+            <div class="right">
+                <h3> Enter keywords to remove </h3>
+                <input id="remove"/>
+                <button id="delete"> Remove</button> 
+                <button id="clear"> Clear All</button>
+            </div>
+        </div>
+
         <br>
         <p> Enter the duration of the block, in minutes.</p>
         <input id="time"/>
         <button id="block"> Block </button>
-        
-        <br>
-        <p> Enter the keywords you want removed from the list.</p>
-        <input id="remove"/>
-        <button id="delete"> Remove</button> 
-        <button id="clear"> Clear All</button>
+        <button id="refresh"> Get Block List</button>
 
         <br>
         <p> Websites containing the following words will be blocked: </p>

@@ -1,20 +1,5 @@
 document.addEventListener('DOMContentLoaded', documentEvents, false);
 
-function printList() {
-    chrome.storage.sync.get('sites', function(result) {
-        list = result.sites;
-        if (list) {
-            var i; 
-            output = "";
-            for (i=0; i<list.length; i++)
-                output += 'Element ' + (i+1) + ': ' + list[i] + '<br>';
-            document.getElementById('list').innerHTML = output;
-        }
-        else
-            document.getElementById('list').innerHTML = "";
-    })
-}
-
 function printList(list) {
     if (list) {
         var i; 
@@ -33,6 +18,7 @@ function add(input) {
             result.sites[result.sites.length] = input.value
             chrome.storage.sync.set({sites:result.sites}, function() {
                 printList(result.sites);
+                input.value = '';
             })
         }
     })
@@ -47,6 +33,7 @@ function blocker(input) {
             newDate.setTime(Date.now() + val*1000*60);
             chrome.storage.sync.set({time: newDate.toLocaleString()}, function() {
                 console.log('Time has been stored');
+                input.value = '';
             })
 
             chrome.alarms.clear('timer', function(){
@@ -63,7 +50,7 @@ function removeWord(input) {
         chrome.storage.sync.get('sites', function(result) {
             x = 0;
             while (x < result.sites.length) {  
-                if (result.sites[0].includes(input.value))
+                if (result.sites[0] == input.value)
                     result.sites.shift();
                 else {
                     x+=1; 
@@ -75,6 +62,7 @@ function removeWord(input) {
             chrome.storage.sync.set({sites: result.sites}, function() {
                 console.log('Website list has been modified');
                 printList(result.sites);
+                input.value = '';
             })
         })
     }
@@ -84,6 +72,12 @@ function reset() {
     document.getElementById('list').innerHTML = "";
     chrome.storage.sync.set({sites: []}, function() {
         console.log('Website list has been reset');
+    })
+}
+
+function getList() {
+    chrome.storage.sync.get('sites', function(result) {
+        printList(result.sites);
     })
 }
 
@@ -100,9 +94,7 @@ function documentEvents() {
     document.getElementById('clear').addEventListener('click', function() {
         reset();
     })
+    document.getElementById('refresh').addEventListener('click', function() {
+        getList();
+    })
 }
-
-document.addEventListener('pageshow', function() {
-    console.log('Ok shit worked');
-    printList();
-})

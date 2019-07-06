@@ -1,0 +1,20 @@
+h1 {
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.left {
+    /*flex: 0 0 65%; */
+    float:left;
+    width:75%;
+    overflow:hidden;
+}
+
+.right {
+    float:left;
+    width:25%;
+    overflow:hidden;
+}

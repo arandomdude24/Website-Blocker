@@ -1,20 +1,45 @@
 h1 {
     text-align: center;
+    font-size: 40px;
 }
 
 .wrapper {
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
 }
 
-.left {
-    /*flex: 0 0 65%; */
-    float:left;
-    width:75%;
-    overflow:hidden;
+#boxOne {
+    height: 175px;
 }
 
-.right {
-    float:left;
-    width:25%;
-    overflow:hidden;
+#boxTwo {
+    height: 200px;
 }
+
+#adding {
+    flex-basis: 300px;
+}
+
+#removing { 
+    flex-basis: 300px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+#blocking {
+    flex-basis: 250px;
+}
+
+#buttons {
+    flex-basis: 100px;
+}
+
+#sites {
+    flex-basis: 200px;
+}
+

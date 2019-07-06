@@ -8,29 +8,37 @@
 
     <body>
         <h1> Options </h1>
-        <div class="wrapper">
-            <div class="left">
-                <h3> Enter keywords to block </h3>
+
+        <div class="wrapper" id="boxOne">
+            <div id="adding">
+                <h3 class="heading"> Enter keywords to block </h3>
                 <input id="site"/> 
                 <button id="add"> Add</button>
             </div>
                 
-            <div class="right">
+            <div class="removing">
                 <h3> Enter keywords to remove </h3>
                 <input id="remove"/>
                 <button id="delete"> Remove</button> 
-                <button id="clear"> Clear All</button>
             </div>
         </div>
 
-        <br>
-        <p> Enter the duration of the block, in minutes.</p>
-        <input id="time"/>
-        <button id="block"> Block </button>
-        <button id="refresh"> Get Block List</button>
+        <div class="wrapper" id="boxTwo">
+            <div id="blocking">
+                <h3> Enter amount of minutes</h3>
+                <input id="time"/>
+                <button id="block"> Block </button>
+            </div>
 
-        <br>
-        <p> Websites containing the following words will be blocked: </p>
-        <p id='list'></p>
+            <div id="buttons">
+                <button id="clear"> Clear All</button>
+                <button id="refresh"> Get Block List</button>
+            </div>
+
+            <div id="sites">
+                <h3> Block List: </h3>
+                <p id='list'></p>
+            </div>
+        </div>
     </body>
 </html>

@@ -32,14 +32,50 @@ h3 {
 }
 
 #blocking {
-    flex-basis: 250px;
+    flex-basis: 300px;
 }
 
 #buttons {
-    flex-basis: 100px;
+    display: block;
+    flex-basis: 150px;
 }
+
+#clear {
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+#refresh {border: 1px solid black}
 
 #sites {
+    text-align: left;
+    display: block;
     flex-basis: 200px;
+    height: 70px;  
 }
 
+#list {
+    text-align: left;
+    font-size: 15px;
+}
+
+button {
+    background-color: darkgreen;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid black
+}
+
+input {
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: lightblue;
+    color: black;
+}

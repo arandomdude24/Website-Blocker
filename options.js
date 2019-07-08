@@ -5,7 +5,7 @@ function printList(list) {
         var i; 
         output = "";
         for (i=0; i<list.length; i++)
-            output += 'Element ' + (i+1) + ': ' + list[i] + '<br>';
+            output += (i+1) + '. ' + list[i] + '<br>';
         document.getElementById('list').innerHTML = output;
     }
     else

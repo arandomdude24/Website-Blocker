@@ -1,4 +1,11 @@
 body {
-    height: 100px;
-    width: 200px;
+    height: 70px;
+    width: 250px;
+    text-align: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+#text {
+    font-size: 16px;
 }
